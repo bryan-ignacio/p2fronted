@@ -42,7 +42,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <a href="funciones.html" class="btn btn-primary btn-block">Agregar</a>
+                      <a class="btn btn-primary btn-block" onclick="agregarFuncion()">Agregar</a>
                     </div>
                   </form>
                 </div>
@@ -53,9 +53,31 @@
       </div>
     </div>
   </div>
-
   <script>
-      
+    function agregarFuncion() {
+      let xhr = new XMLHttpRequest();
+      let objeto = JSON.stringify({
+        nombre: document.getElementById("nombre").value,
+        horario: document.getElementById("horario").value
+      })
+      fetch('http://localhost:3000/agregarFuncion', {
+        method: 'POST',
+        body: objeto,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+        .then(response => {
+          console.log(response);
+          console.log(response.message)
+          if (response.message == 'Failed') {
+            alert(`Esta funcion ya existe.`)
+          } else if (response.message == 'Success') {
+            alert(`Se agrego la funcion correctamente.`)
+            location.href = "funciones.html"
+          }
+        })
+    }
   </script>
 
   <script src="vendor/jquery/jquery.min.js"></script>
