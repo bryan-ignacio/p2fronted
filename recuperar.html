@@ -30,7 +30,7 @@
                   </div>
                   <form class="user">
                     <div class="form-group">
-                      <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
+                      <input type="text" class="form-control" id="usuario" aria-describedby="emailHelp"
                         placeholder="Usuario">
                     </div>
                     <div class="form-group">
@@ -39,7 +39,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <a href="index.html" class="btn btn-primary btn-block">Recuperar Contraseña</a>
+                      <a class="btn btn-primary btn-block" onclick="recuperar()">Recuperar Contraseña</a>
                     </div>
                   </form>
                   <div class="text-center">
@@ -55,6 +55,36 @@
       </div>
     </div>
   </div>
+  <!-- Scripts -->
+  <script>
+    function recuperar(){
+      let xhr = new XMLHttpRequest();
+      let objeto = JSON.stringify({
+        usuario: document.getElementById("usuario").value
+      })
+      fetch('http://localhost:3000/recuperarPassword', {
+        method: 'POST',
+        body: objeto,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+        .catch(err => {
+          console.error('Error:', err)
+          alert("Ocurrio un error, ver la consola")
+        })
+        .then(response => {
+          var password = response.message;
+          console.log(response);
+          console.log(response.message)
+          if (response.message == 'Failed') {
+            alert(`Este usuario no existe.`)
+          } else {
+            alert(`Su contraseña es: ${password}`)
+          }
+        })
+    }
+  </script>
   <!-- Login Content -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

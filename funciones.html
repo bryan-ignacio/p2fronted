@@ -279,14 +279,10 @@
                     <a href="funcion.html">Eliminar Funcion</a>
                   </button>
                 </div>
-
                 <div id="tabla" class="table-responsive p-3">
-
                 </div>
               </div>
             </div>
-            <!--Row-->
-
             <!-- Modal Logout -->
             <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
               aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
@@ -317,6 +313,7 @@
     </div>
 
     <!--scripts-->
+
     <script>
       var html = `<table class="table align-items-center table-flush" id="dataTable">
         <thead class="thead-light">
@@ -328,27 +325,27 @@
             <th>Espacios Ocupados</th>
           </tr>
         </thead>`
-      let xhr = new XMLHttpRequest();
-      var ruta = 'http://localhost:3000/verFunciones';
-      xhr.open('GET', ruta)
-      xhr.send()
-      xhr.onreadystatechange = (e) => {
-        var funciones = JSON.parse(xhr.responseText);
-        html += '<tbody>'
-        for (var i = 0; i < funciones.length; i++) {
-          html += '<tr>'
-          html += '<td>' + funciones[i].nombre + '</td>'
-          html += '<td>' + funciones[i].horario + '</td>'
-          if(funciones[i].disponible == true){
-            html += '<td>' + 'Disponible' + '</td>'
-          }else{
-            html += '<td>' + 'No Disponible' + '</td>'
-          }
-          html += '</tr>'
-        }
-        html += '</tbody> </table>'
-        document.getElementById('tabla').innerHTML = html;
-      }
+
+      fetch('http://localhost:3000/verFunciones')
+        .then(response => response.json())
+        .then(json => {
+          console.log(json)
+          var funciones = json
+          html += '<tbody>'
+            for (var i = 0; i < funciones.length; i++) {
+              html += '<tr>'
+              html += '<td>' + funciones[i].nombre + '</td>'
+              html += '<td>' + funciones[i].horario + '</td>'
+              if (funciones[i].disponible == true) {
+                html += '<td>' + 'Disponible' + '</td>'
+              } else {
+                html += '<td>' + 'No Disponible' + '</td>'
+              }
+              html += '</tr>'
+            }
+            html += '</tbody> </table>'
+            document.getElementById('tabla').innerHTML = html;
+        })
     </script>
 
     <!-- Scroll to top -->
