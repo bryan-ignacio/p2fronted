@@ -42,11 +42,11 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <a class="btn btn-primary btn-block" onclick="validarUsuario()">Iniciar Sesión</a>
+                      <a class="btn btn-primary btn-block" onclick="validarUsuario()" type="button">Iniciar Sesión</a>
                     </div>
                   </form>
                   <div class="text-center">
-                    <a class="font-weight-bold small" onclick="Registrarse()">Crear una Cuenta!</a>
+                    <a class="font-weight-bold small" onclick="Registrarse()" type="button">Crear una Cuenta!</a>
                   </div>
                   <div class="text-center">
                     <a class="font-weight-bold small" href="recuperar.html">Olvidó su Contraseña!</a>
@@ -64,6 +64,7 @@
   <script>
     function validarUsuario() {
       let xhr = new XMLHttpRequest();
+      var usuario = document.getElementById("usuario").value;
       let objeto = JSON.stringify({
         usuario: document.getElementById("usuario").value,
         password: document.getElementById("password").value
@@ -84,19 +85,16 @@
           console.log(response.message)
           if(response.message == 'administrador'){
             alert(`Bienvenido Administrador.`)
+            //sessionStorage es propio de javascript y guarda un objeto en memoria.
+            sessionStorage.setItem('usuario',usuario)
             location.href = "index.html"
           }else if(response.message == 'usuario'){
             alert(`Bienvenido Cliente.`)
+            sessionStorage.setItem('usuario',usuario)
             location.href = "../paginaPrincipal/inicio.html"
           }else if(response.message == 'Failed'){
             alert(`Contraseña y/o usuario incorrecto`)
           }
-          //if (response.message == 'Failed') {
-          //  alert(`Contraseña y/o usuario incorrecto`)
-          //} else if (response.message == 'Success') {
-          //  alert(`Credenciales correctas, bienvenido`)
-          //  location.href = "index.html"
-          //}
         })
     }
     function Registrarse() {

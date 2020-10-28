@@ -15,46 +15,17 @@
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
-<body onload="cargarUsuario()" id="page-top">
+<body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
         <div class="sidebar-brand-icon">
           <img src="img/logo/movie.png">
         </div>
         <div class="sidebar-brand-text mx-3">Cinella</div>
       </a>
-      <hr class="sidebar-divider my-0">
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>inicio</span></a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="peliculas.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Peliculas</span></a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" href="resenias.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Reseñas</span></a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" href="funciones.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Funciones</span></a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" href="usuarios.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Usuarios</span></a>
-      </li>
+  
     </ul>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -89,10 +60,8 @@
 
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small" id="usuario"></span>
+              <a class="nav-link dropdown-toggle" href="../paginaPrincipal/inicio.html" id="userDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
+                inicio
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -118,8 +87,6 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Funciones</h1>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="./index.html">inicio</a></li>
-              <li class="breadcrumb-item">Funciones</li>
             </ol>
           </div>
           <!-- Row -->
@@ -129,14 +96,6 @@
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Tabla De Funciones</h6>
-                </div>
-                <div class="card-body">
-                  <button type="button" class="btn btn-outline-success mb-1">
-                    <a href="funcion.html">Agregar Funcion</a>
-                  </button>
-                  <button type="button" class="btn btn-outline-danger mb-1">
-                    <a href="funcion.html">Eliminar Funcion</a>
-                  </button>
                 </div>
                 <div id="tabla" class="table-responsive p-3">
                 </div>
@@ -184,7 +143,6 @@
             <th>Espacios Ocupados</th>
           </tr>
         </thead>`
-
       fetch('http://localhost:3000/verFunciones')
         .then(response => response.json())
         .then(json => {
@@ -207,14 +165,6 @@
             html += '</tbody> </table>'
             document.getElementById('tabla').innerHTML = html;
         })
-    </script>
-
-    <script>
-      function cargarUsuario(){
-        var idHtml = document.querySelector('#usuario')
-        var user = sessionStorage.usuario
-        idHtml.innerHTML = `<h3>${user}</h3>`
-      }
     </script>
 
     <!-- Scroll to top -->

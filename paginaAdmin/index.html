@@ -13,8 +13,7 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="css/ruang-admin.min.css" rel="stylesheet">
 </head>
-
-<body id="page-top">
+<body onload="cargarUsuario()" id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
@@ -92,7 +91,8 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">Administrador</span>
+
+                <span class="ml-2 d-none d-lg-inline text-white small" id="usuario"></span>
                 
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -235,7 +235,13 @@
       <!-- Footer -->
     </div>
   </div>
-
+  <script>
+    function cargarUsuario(){
+      var idHtml = document.querySelector('#usuario')
+      var user = sessionStorage.usuario
+      idHtml.innerHTML = `<h3>${user}</h3>`
+    }
+  </script>
   <!-- Scroll to top -->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>

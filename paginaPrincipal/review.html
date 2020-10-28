@@ -22,8 +22,14 @@
 	</head>
 
 
-	<body>
-		
+	<body onload="cargarUsuario()">
+		<div class="container">
+			<a href="inicio.html" id="branding">
+				<div class="logo-copy">
+					<br>
+					<h1 class="site-title" id="usuario"></h1>
+				</div>
+		</div>
 
 		<div id="site-content">
 			<header class="site-header">
@@ -41,8 +47,7 @@
 						<ul class="menu">
 							<li class="menu-item current-menu-item"><a href="inicio.html">Inicio</a></li>
 							<li class="menu-item"><a href="review.html">Cartelera</a></li>
-							<li class="menu-item"><a href="about.html">About</a></li>
-							<li class="menu-item"><a href="contact.html">Contact</a></li>
+							<li class="menu-item"><a href="../paginaAdmin/FuncionesCliente.html">Funciones</a></li>
 							<li class="menu-item"><a href="principal.html">Cerrar Sesión</a></li>
 						</ul> <!-- .menu -->
 
@@ -195,13 +200,18 @@
 						</div>
 					</div> <!-- .row -->
 
-					<div class="colophon">Copyright 2014 Company name, Designed by Themezy. All rights reserved</div>
 				</div> <!-- .container -->
 
 			</footer>
 		</div>
 		<!-- Default snippet for navigation -->
-		
+		<script>
+			function cargarUsuario(){
+				var idHtml = document.querySelector('#usuario')
+				var user = sessionStorage.usuario
+				idHtml.innerHTML = `<h3>Bienvenido: ${user}</h3>`
+			  }
+		</script>
 
 
 		<script src="js/jquery-1.11.1.min.js"></script>
