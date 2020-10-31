@@ -142,7 +142,7 @@
                 </div>
 
                 <div class="table-responsive p-3">
-                  <table class="table align-items-center table-flush" id="dataTable">
+                  <table class="table align-items-center table-flush" id="table">
                     <thead class="thead-light">
                       <tr>
                         <th>Titulo</th>
@@ -152,18 +152,9 @@
                         <th>sinopsis</th>
                         <th>Editar</th>
                       </tr>
+
                     </thead>
-                    <tbody id="table">
-                    <tfoot>
-                      <tr>
-                        <th>Titulo</th>
-                        <th>imagen</th>
-                        <th>puntuacion</th>
-                        <th>duracion</th>
-                        <th>sinopsis</th>
-                        <th>Editar</th>
-                      </tr>
-                    </tfoot>
+                    <tbody>
                     </tbody>
                   </table>
                 </div>
@@ -223,19 +214,57 @@
             <td> ${json[i].puntuacion} </td>
             <td> ${json[i].duracion} </td>
             <td> ${json[i].sinopsis} </td>
-            <td> <button type="button" value = "${json[i].titulo}" class="btn btn-info mb-1" href="#" onclick = "verPelicula(this)" >Editar</button>
-              <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+            <td> <button type="button" value = "${json[i].titulo}" class="btn btn-info mb-1" onclick="verPelicula(this)">Editar</button>
+                 <button type="button" value = "${json[i].titulo}" class="btn btn-danger mb-1" onclick="eliminar(this)">Eliminar</button>
              </td>
           </tr>`
             }
+            tabla.innerHTML += `<tfoot>
+              <tr>
+                <th>Titulo</th>
+                <th>imagen</th>
+                <th>puntuacion</th>
+                <th>duracion</th>
+                <th>sinopsis</th>
+                <th>Editar</th>
+              </tr>
+            </tfoot>`
           })
       }
 
       function verPelicula(boton) {
+        //creo una variable que voy a mandar al sessionStorage.
         var titulo = boton.value
-        sessionStorage.setItem("buscar", titulo)
-        //crear pagina Pelicula con los datos a editar.
-        location.href('#')
+        //se guarda en el sessionStorage como ver y guarda el titulo.
+        sessionStorage.setItem("ver", titulo)
+        //redireccionamos a la pagina pelicula.
+        location.href = "pelicula.html"
+      }
+
+      function eliminar(boton) {
+        var titulo = boton.value
+        let objeto = JSON.stringify({
+          titulo: titulo
+        })
+          fetch(`http://localhost:3000/eliminarPelicula/${titulo}`, {
+            method: 'POST',
+            body: objeto,
+            headers: {
+              'Content-Type': 'application/json'
+            }})
+            .then(response => response.json())
+            .catch(error => {
+              console.error('Error:', error)
+              alert("A ocurrido un error.")})
+            .then(json => {
+              console.log(json)
+              if (json.respuesta == 'Fallo') {
+                alert(`No se pudo eliminar la Pelicula.`)
+              } else if (json.respuesta == 'Exito') {
+                alert(`Se elimino la Pelicula correctamente.`)
+                location.href = "peliculas.html"
+              }
+            })
       }
     </script>
     <!-- Scroll to top -->
