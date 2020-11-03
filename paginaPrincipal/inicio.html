@@ -23,177 +23,176 @@
 </head>
 
 
-<body onload="cargarUsuario()">
+<body onload="cargarUsuario(),mostrarPeliculas()">
 	<div class="container">
 		<a href="inicio.html" id="branding">
 			<div class="logo-copy">
 				<br>
 				<h1 class="site-title" id="usuario"></h1>
 			</div>
-	</div>		
-			<div id="site-content">
-				<header class="site-header">
-					<div class="container">
-						<a href="inicio.html" id="branding">
-							<img src="images/logo.png" alt="" class="logo">
-							<div class="logo-copy">
-								<h1 class="site-title">Cinella</h1>
-								<small class="site-description">La magia del cine</small>
-							</div>
-						</a> <!-- #branding -->
-						<div class="main-navigation">
-							<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-							<ul class="menu">
-								<li class="menu-item current-menu-item"><a href="inicio.html">Inicio</a></li>
-								<li class="menu-item"><a href="review.html">Cartelera</a></li>
-								<li class="menu-item"><a href="../paginaAdmin/FuncionesCliente.html">Funciones</a></li>
-								<li class="menu-item"><a href="principal.html">Cerrar Sesión</a></li>
-							</ul> <!-- .menu -->
-							<form action="#" class="search-form">
-								<input type="text" placeholder="Search...">
-								<button><i class="fa fa-search"></i></button>
-							</form>
-						</div> <!-- .main-navigation -->
-
-						<div class="mobile-navigation"></div>
+	</div>
+	<div id="site-content">
+		<header class="site-header">
+			<div class="container">
+				<a href="inicio.html" id="branding">
+					<img src="images/logo.png" alt="" class="logo">
+					<div class="logo-copy">
+						<h1 class="site-title">Cinella</h1>
+						<small class="site-description">La magia del cine</small>
 					</div>
+				</a> <!-- #branding -->
+				<div class="main-navigation">
+					<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+					<ul class="menu">
+						<li class="menu-item current-menu-item"><a href="inicio.html">Inicio</a></li>
+						<li class="menu-item"><a href="cartelera.html">Cartelera</a></li>
+						<li class="menu-item"><a href="../paginaAdmin/FuncionesCliente.html">Funciones</a></li>
+						<li class="menu-item"><a href="principal.html">Cerrar Sesión</a></li>
+					</ul> <!-- .menu -->
+					<form action="#" class="search-form">
+						<input type="text" placeholder="Search...">
+						<button><i class="fa fa-search"></i></button>
+					</form>
+				</div> <!-- .main-navigation -->
 
-				</header>
-				<main class="main-content">
-					<div class="container">
-						<div class="page">
-							<div class="row">
-								<div class="col-md-9">
-									<div class="slider">
-										<ul class="slides">
-											<li><a href="#"><img src="dummy/slide-1.jpg" alt="Slide 1"></a></li>
-											<li><a href="#"><img src="dummy/slide-2.jpg" alt="Slide 2"></a></li>
-											<li><a href="#"><img src="dummy/slide-3.jpg" alt="Slide 3"></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="row">
-										<div class="col-sm-6 col-md-12">
-											<div class="latest-movie">
-												<a href="#"><img src="dummy/thumb-1.jpg" alt="Movie 1"></a>
-											</div>
-										</div>
-										<div class="col-sm-6 col-md-12">
-											<div class="latest-movie">
-												<a href="#"><img src="dummy/thumb-2.jpg" alt="Movie 2"></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div> <!-- .row -->
-							<div class="row">
-								<div class="col-sm-6 col-md-3">
-									<div class="latest-movie">
-										<a href="#"><img src="dummy/thumb-3.jpg" alt="Movie 3"></a>
-									</div>
-								</div>
-								<div class="col-sm-6 col-md-3">
-									<div class="latest-movie">
-										<a href="#"><img src="dummy/thumb-4.jpg" alt="Movie 4"></a>
-									</div>
-								</div>
-								<div class="col-sm-6 col-md-3">
-									<div class="latest-movie">
-										<a href="#"><img src="dummy/thumb-5.jpg" alt="Movie 5"></a>
-									</div>
-								</div>
-								<div class="col-sm-6 col-md-3">
-									<div class="latest-movie">
-										<a href="#"><img src="dummy/thumb-6.jpg" alt="Movie 6"></a>
-									</div>
-								</div>
-							</div> <!-- .row -->
-						</div>
-					</div> <!-- .container -->
-				</main>
-				<footer class="site-footer">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-2">
-								<div class="widget">
-									<h3 class="widget-title">About Us</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia tempore vitae
-										mollitia nesciunt saepe cupiditate</p>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="widget">
-									<h3 class="widget-title">Recent Review</h3>
-									<ul class="no-bullet">
-										<li><a href="#">Lorem ipsum dolor</a></li>
-										<li><a href="#">Sit amet consecture</a></li>
-										<li><a href="#">Dolorem respequem</a></li>
-										<li><a href="#">Invenore veritae</a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="widget">
-									<h3 class="widget-title">Help Center</h3>
-									<ul class="no-bullet">
-										<li><a href="#">Lorem ipsum dolor</a></li>
-										<li><a href="#">Sit amet consecture</a></li>
-										<li><a href="#">Dolorem respequem</a></li>
-										<li><a href="#">Invenore veritae</a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="widget">
-									<h3 class="widget-title">Join Us</h3>
-									<ul class="no-bullet">
-										<li><a href="#">Lorem ipsum dolor</a></li>
-										<li><a href="#">Sit amet consecture</a></li>
-										<li><a href="#">Dolorem respequem</a></li>
-										<li><a href="#">Invenore veritae</a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="widget">
-									<h3 class="widget-title">Social Media</h3>
-									<ul class="no-bullet">
-										<li><a href="#">Facebook</a></li>
-										<li><a href="#">Twitter</a></li>
-										<li><a href="#">Google+</a></li>
-										<li><a href="#">Pinterest</a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="widget">
-									<h3 class="widget-title">Newsletter</h3>
-									<form action="#" class="subscribe-form">
-										<input type="text" placeholder="Email Address">
-									</form>
-								</div>
-							</div>
-						</div> <!-- .row -->
-
-					</div> <!-- .container -->
-
-				</footer>
+				<div class="mobile-navigation"></div>
 			</div>
-			<!-- Default snippet for navigation -->
-			<script>
-				function cargarUsuario(){
-					var idHtml = document.querySelector('#usuario')
-					var user = sessionStorage.usuario
-					idHtml.innerHTML = `<h3>Bienvenido: ${user}</h3>`
-				  }
-			</script>
+
+		</header>
+
+		<main class="main-content" >
+			<div class="container">
+				<div class="page">
+
+					<div class="row" id="peliculas">
+						<!-- <div class="col-sm-6 col-md-3">
+							<div class="latest-movie">
+								<a href="#"><img src="dummy/thumb-3.jpg" alt="Movie 3"></a>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="latest-movie">
+								<a href="#"><img src="dummy/thumb-4.jpg" alt="Movie 4"></a>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="latest-movie">
+								<a href="#"><img src="dummy/thumb-5.jpg" alt="Movie 5"></a>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="latest-movie">
+								<a href="#"><img src="dummy/thumb-6.jpg" alt="Movie 6"></a>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div> <!-- .container -->
+		</main>
 
 
 
-			<script src="js/jquery-1.11.1.min.js"></script>
-			<script src="js/plugins.js"></script>
-			<script src="js/app.js"></script>
+		<footer class="site-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2">
+						<div class="widget">
+							<h3 class="widget-title">About Us</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia tempore vitae
+								mollitia nesciunt saepe cupiditate</p>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="widget">
+							<h3 class="widget-title">Recent Review</h3>
+							<ul class="no-bullet">
+								<li><a href="#">Lorem ipsum dolor</a></li>
+								<li><a href="#">Sit amet consecture</a></li>
+								<li><a href="#">Dolorem respequem</a></li>
+								<li><a href="#">Invenore veritae</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="widget">
+							<h3 class="widget-title">Help Center</h3>
+							<ul class="no-bullet">
+								<li><a href="#">Lorem ipsum dolor</a></li>
+								<li><a href="#">Sit amet consecture</a></li>
+								<li><a href="#">Dolorem respequem</a></li>
+								<li><a href="#">Invenore veritae</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="widget">
+							<h3 class="widget-title">Join Us</h3>
+							<ul class="no-bullet">
+								<li><a href="#">Lorem ipsum dolor</a></li>
+								<li><a href="#">Sit amet consecture</a></li>
+								<li><a href="#">Dolorem respequem</a></li>
+								<li><a href="#">Invenore veritae</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="widget">
+							<h3 class="widget-title">Social Media</h3>
+							<ul class="no-bullet">
+								<li><a href="#">Facebook</a></li>
+								<li><a href="#">Twitter</a></li>
+								<li><a href="#">Google+</a></li>
+								<li><a href="#">Pinterest</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="widget">
+							<h3 class="widget-title">Newsletter</h3>
+							<form action="#" class="subscribe-form">
+								<input type="text" placeholder="Email Address">
+							</form>
+						</div>
+					</div>
+				</div> <!-- .row -->
+
+			</div> <!-- .container -->
+
+		</footer>
+	</div>
+	<!-- Default snippet for navigation -->
+	<script>
+		function cargarUsuario() {
+			var idHtml = document.querySelector('#usuario')
+			var user = sessionStorage.usuario
+			idHtml.innerHTML = `<h3>Bienvenido: ${user}</h3>`
+		}
+
+		function mostrarPeliculas() {
+			var tabla = document.querySelector('#peliculas')
+			//busco al elemento con id tabla
+			fetch('http://localhost:3000/verPeliculas')
+				.then(response => response.json())
+				.catch(error =>
+					console.log(error)
+				)
+				.then(json => {
+					console.log(json)
+					for (var i in json) {
+						tabla.innerHTML +=`<div class="col-sm-6 col-md-3">
+							<div class="latest-movie">
+								<a href="#"><img src="${json[i].imagen}" alt="Movie ${i}"></a>
+							</div>
+						</div>`
+					}
+				})
+		}
+	</script>
+
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/app.js"></script>
 
 </body>
 

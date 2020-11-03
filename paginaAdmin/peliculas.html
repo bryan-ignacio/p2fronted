@@ -177,7 +177,7 @@
                   <!-- termina boton -->
 
                   <!-- boton para generar PDF -->
-                  <button type="button" class="btn btn-outline-info mb-1">
+                  <button type="button" class="btn btn-outline-info mb-1" onclick="generarPDF()">
                     <a>Generar Reportes en PDF</a>
                   </button>
                   <!-- termina boton -->
@@ -307,6 +307,18 @@
                 location.href = "peliculas.html"
               }
             })
+      }
+
+      function generarPDF(){
+        var datos = document.getElementById('table').innerHTML;
+        var ventana = window.open('','','width=600,height=600')
+        ventana.document.write('<html><head>')
+        ventana.document.write('<title>REPORTE PELICULAS</title></head>')
+        ventana.document.write('<body>')
+        ventana.document.write(datos)
+        ventana.document.write('</body></html>')
+        ventana.document.close()
+        ventana.print()
       }
     </script>
     <!-- Scroll to top -->

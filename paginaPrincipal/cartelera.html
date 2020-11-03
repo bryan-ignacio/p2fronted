@@ -5,7 +5,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 		
-		<title>pelicula</title>
+		<title>Cartelera</title>
+
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
 		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -20,9 +21,14 @@
 
 	</head>
 
-
-	<body>
-		
+	<body onload="cargarUsuario(),mostrarPeliculas()">
+		<div class="container">
+			<a href="inicio.html" id="branding">
+				<div class="logo-copy">
+					<br>
+					<h1 class="site-title" id="usuario"></h1>
+				</div>
+		</div>
 
 		<div id="site-content">
 			<header class="site-header">
@@ -30,16 +36,16 @@
 					<a href="inicio.html" id="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-copy">
-							<h1 class="site-title">Company Name</h1>
-							<small class="site-description">Tagline goes here</small>
+							<h1 class="site-title">Cinella</h1>
+							<small class="site-description">La magia del cine</small>
 						</div>
 					</a> <!-- #branding -->
 
 					<div class="main-navigation">
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item"><a href="inicio.html">Inicio</a></li>
-							<li class="menu-item current-menu-item"><a href="review.html">Cartelera</a></li>
+							<li class="menu-item current-menu-item"><a href="inicio.html">Inicio</a></li>
+							<li class="menu-item"><a href="cartelera.html">Cartelera</a></li>
 							<li class="menu-item"><a href="../paginaAdmin/FuncionesCliente.html">Funciones</a></li>
 							<li class="menu-item"><a href="principal.html">Cerrar Sesión</a></li>
 						</ul> <!-- .menu -->
@@ -58,41 +64,54 @@
 					<div class="page">
 						<div class="breadcrumbs">
 							<a href="index.html">Home</a>
-							<a href="review.html">Movie Review</a>
-							<span>The Croods</span>
+							<span>Movie Review</span>
 						</div>
 
-						<div class="content">
-							<div class="row">
-								<div class="col-md-6">
-									<figure class="movie-poster"><img src="dummy/single-image.jpg" alt="#"></figure>
-								</div>
-								<div class="col-md-6">
-									<h2 class="movie-title">The Croods</h2>
-									<div class="movie-summary">
-										<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-
-										<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit sed.</p>
-									</div>
-									<ul class="movie-meta">
-										<li><strong>Rating:</strong> 
-											<div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
-										</li>
-										<li><strong>Length:</strong> 98 min</li>
-										<li><strong>Premiere:</strong> 22 March 2013 (USA)</li>
-										<li><strong>Category:</strong> Animation/Adventure/Comedy</li>
-									</ul>
-
-									<ul class="starring">
-										<li><strong>Directors:</strong> Kirk de Mico (as Kirk DeMico). Chris Sanders</li>
-										<li><strong>Writers:</strong> Chris Sanders (screenplay), Kirk De Micco (screenplay)</li>
-										<li><strong>Stars:</strong> Nicolas Cage, Ryan Reynolds, Emma Stone</li>
-									</ul>
-								</div>
-							</div> <!-- .row -->
-							<div class="entry-content">
-								
+						<div class="filters">
+							<select name="#" id="#" placeholder="Choose Category">
+								<option value="#">Action</option>
+								<option value="#">Drama</option>
+								<option value="#">Fantasy</option>
+								<option value="#">Horror</option>
+								<option value="#">Adventure</option>
+							</select>
+							<select name="#" id="#">
+								<option value="#">2012</option>
+								<option value="#">2013</option>
+								<option value="#">2014</option>
+							</select>
+						</div>
+						<div class="movie-list" id="peliculas">
+							<!-- <div class="movie">
+								<figure class="movie-poster"><img src="dummy/thumb-3.jpg" alt="#"></figure>
+								<div class="movie-title"><a href="pelicula.html">Maleficient</a></div>
+								<p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
 							</div>
+							<div class="movie">
+								<figure class="movie-poster"><img src="dummy/thumb-4.jpg" alt="#"></figure>
+								<div class="movie-title"><a href="pelicula.html">The adventure of Tintin</a></div>
+								<p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
+							</div>
+							<div class="movie">
+								<figure class="movie-poster"><img src="dummy/thumb-5.jpg" alt="#"></figure>
+								<div class="movie-title"><a href="pelicula.html">Hobbit</a></div>
+								<p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
+							</div>
+							<div class="movie">
+								<figure class="movie-poster"><img src="dummy/thumb-6.jpg" alt="#"></figure>
+								<div class="movie-title"><a href="pelicula.html">Exists</a></div>
+								<p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
+						 -->
+						</div> <!-- .movie-list -->
+
+						<div class="pagination">
+							<a href="#" class="page-number prev"><i class="fa fa-angle-left"></i></a>
+							<span class="page-number current">1</span>
+							<a href="#" class="page-number">2</a>
+							<a href="#" class="page-number">3</a>
+							<a href="#" class="page-number">4</a>
+							<a href="#" class="page-number">5</a>
+							<a href="#" class="page-number next"><i class="fa fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div> <!-- .container -->
@@ -160,13 +179,38 @@
 						</div>
 					</div> <!-- .row -->
 
-					<div class="colophon">Copyright 2014 Company name, Designed by Themezy. All rights reserved</div>
 				</div> <!-- .container -->
 
 			</footer>
 		</div>
 		<!-- Default snippet for navigation -->
-		
+		<script>
+			function cargarUsuario(){
+				var idHtml = document.querySelector('#usuario')
+				var user = sessionStorage.usuario
+				idHtml.innerHTML = `<h3>Bienvenido: ${user}</h3>`
+			  }
+
+			function mostrarPeliculas() {
+				var tabla = document.querySelector('#peliculas')
+				//busco al elemento con id tabla
+				fetch('http://localhost:3000/verPeliculas')
+					.then(response => response.json())
+					.catch(error =>
+						console.log(error)
+					)
+					.then(json => {
+						console.log(json)
+						for (var i in json) {
+							tabla.innerHTML +=`<div class="movie">
+								<figure class="movie-poster"><img src="${json[i].imagen}" alt="#"></figure>
+								<div class="movie-title"><a href="pelicula.html">${json[i].titulo}</a></div>
+								<p>${json[i].sinopsis}</p>
+							</div>`
+						}
+					})
+			}
+		</script>
 
 
 		<script src="js/jquery-1.11.1.min.js"></script>
