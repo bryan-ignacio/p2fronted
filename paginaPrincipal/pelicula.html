@@ -1,194 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
-		
-		<title>pelicula</title>
-		<!-- Loading third party fonts -->
-		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
-		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-		<!-- Loading main css file -->
-		<link rel="stylesheet" href="style.css">
-		
-		<!--[if lt IE 9]>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+	<title>pelicula</title>
+	<!-- Loading third party fonts -->
+	<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+	<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Loading main css file -->
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
 
-	</head>
+</head>
 
 
-	<body onload="cargarUsuario()">
-		
-		<div class="container">
-			<a href="inicio.html" id="branding">
-				<div class="logo-copy">
-					<br>
-					<h1 class="site-title" id="usuario"></h1>
+<body onload="cargarUsuario(),cargarPelicula(),cargarResenas()">
+
+	<script>
+		function getParametro(nombre) {
+			return (window.location.search.match(new RegExp('[?&]' + nombre + '=([^&]+)')) || [, null])[1];
+		}
+	</script>
+
+	<div class="container">
+		<a href="inicio.html" id="branding">
+			<div class="logo-copy">
+				<br>
+				<h1 class="site-title" id="usuario"></h1>
+			</div>
+	</div>
+	<div id="site-content">
+		<header class="site-header">
+			<div class="container">
+				<a href="inicio.html" id="branding">
+					<img src="images/logo.png" alt="" class="logo">
+					<div class="logo-copy">
+						<h1 class="site-title">Cinella</h1>
+						<small class="site-description">La magia del cine</small>
+					</div>
+				</a> <!-- #branding -->
+
+				<div class="main-navigation">
+					<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+					<ul class="menu">
+						<li class="menu-item"><a href="inicio.html">Inicio</a></li>
+						<li class="menu-item current-menu-item"><a href="cartelera.html">Cartelera</a></li>
+						<li class="menu-item"><a href="../paginaAdmin/FuncionesCliente.html">Funciones</a></li>
+						<li class="menu-item"><a href="principal.html">Cerrar Sesión</a></li>
+					</ul> <!-- .menu -->
+
+					<form action="#" class="search-form">
+						<input type="text" placeholder="Search...">
+						<button><i class="fa fa-search"></i></button>
+					</form>
+				</div> <!-- .main-navigation -->
+
+				<div class="mobile-navigation"></div>
+			</div>
+		</header>
+		<main class="main-content">
+			<div class="container">
+				<div class="page">
+					<div class="breadcrumbs">
+						<a href="inicio.html">Inicio</a>
+						<a href="cartelera.html">Cartelera</a>
+					</div>
+
+					<div class="content" id="pelicula">
+					
+					</div>
+
+
 				</div>
-		</div>
-		<div id="site-content">
-			<header class="site-header">
-				<div class="container">
-					<a href="inicio.html" id="branding">
-						<img src="images/logo.png" alt="" class="logo">
-						<div class="logo-copy">
-							<h1 class="site-title">Cinella</h1>
-							<small class="site-description">La magia del cine</small>
-						</div>
-					</a> <!-- #branding -->
+			</div> <!-- .container -->
+		</main>
+		<br>
+		<main class="main-content">
+			<div class="container">
+				<div class="page">
+					<div class="breadcrumbs">
+						<a>Reseñas</a>
+						<hr>
+						<!-- AQUI SE AGREGARAN LAS RESENAS DINAMICAMENTE -->
+						<div id="resenas">
 
-					<div class="main-navigation">
-						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-						<ul class="menu">
-							<li class="menu-item"><a href="inicio.html">Inicio</a></li>
-							<li class="menu-item current-menu-item"><a href="cartelera.html">Cartelera</a></li>
-							<li class="menu-item"><a href="../paginaAdmin/FuncionesCliente.html">Funciones</a></li>
-							<li class="menu-item"><a href="principal.html">Cerrar Sesión</a></li>
-						</ul> <!-- .menu -->
 
-						<form action="#" class="search-form">
-							<input type="text" placeholder="Search...">
-							<button><i class="fa fa-search"></i></button>
-						</form>
-					</div> <!-- .main-navigation -->
+							<!-- <div class="card">
+								<div class="card-header">Usuario1</div>
+								<div class="card-body">
+								  <blockquote class="blockquote mb-0">
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+								  </blockquote>
+								</div>
+							  </div>
+							  <br>
 
-					<div class="mobile-navigation"></div>
+							  <div class="card">
+								<div class="card-header">Usuario1</div>
+								<div class="card-body">
+								  <blockquote class="blockquote mb-0">
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+								  </blockquote>
+								</div>
+							  </div> -->
+
+					</div>
 				</div>
-			</header>
-			<main class="main-content">
-				<div class="container">
-					<div class="page">
-						<div class="breadcrumbs">
-							<a href="index.html">Home</a>
-							<a href="review.html">Movie Review</a>
-							<span>The Croods</span>
-						</div>
+			</div> 
+		</main>
 
-						<div class="content">
-							<div class="row">
-								<div class="col-md-6">
-									<figure class="movie-poster"><img src="dummy/single-image.jpg" alt="#"></figure>
-								</div>
-								<div class="col-md-6">
-									<h2 class="movie-title">The Croods</h2>
-									<div class="movie-summary">
-										<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+		<br>
 
-										<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit sed.</p>
-									</div>
-									<ul class="movie-meta">
-										<li><strong>Rating:</strong> 
-											<div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
-										</li>
-										<li><strong>Length:</strong> 98 min</li>
-										<li><strong>Premiere:</strong> 22 March 2013 (USA)</li>
-										<li><strong>Category:</strong> Animation/Adventure/Comedy</li>
-									</ul>
-
-									<ul class="starring">
-										<li><strong>Directors:</strong> Kirk de Mico (as Kirk DeMico). Chris Sanders</li>
-										<li><strong>Writers:</strong> Chris Sanders (screenplay), Kirk De Micco (screenplay)</li>
-										<li><strong>Stars:</strong> Nicolas Cage, Ryan Reynolds, Emma Stone</li>
-									</ul>
-								</div>
-							</div> <!-- .row -->
-							<div class="entry-content">
-								
-							</div>
+		<main class="main-content">
+			<!-- AQUI ENVIO LOS DATOS PARA AGREGAR A MIS RESENAS -->
+			<div class="container">
+				<div class="page">
+					<div class="breadcrumbs">
+						<div class="contact-form">
+							<!-- ya esta colocado el usuario dinamicamente. -->
+							<h4 id="usuario-resenas"></h4>
+							<!-- voy a enviar los datos usuario,comentario,titulo-->
+							<textarea class="message" placeholder="Escribe tu reseña aqui.." id="comentario"></textarea>
+							<input type="submit" value="Agregar" onclick="agregarResena()">
 						</div>
 					</div>
-				</div> <!-- .container -->
-			</main>
-			<footer class="site-footer">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-2">
-							<div class="widget">
-								<h3 class="widget-title">About Us</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia tempore vitae mollitia nesciunt saepe cupiditate</p>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="widget">
-								<h3 class="widget-title">Recent Review</h3>
-								<ul class="no-bullet">
-									<li>Lorem ipsum dolor</li>
-									<li>Sit amet consecture</li>
-									<li>Dolorem respequem</li>
-									<li>Invenore veritae</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="widget">
-								<h3 class="widget-title">Help Center</h3>
-								<ul class="no-bullet">
-									<li>Lorem ipsum dolor</li>
-									<li>Sit amet consecture</li>
-									<li>Dolorem respequem</li>
-									<li>Invenore veritae</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="widget">
-								<h3 class="widget-title">Join Us</h3>
-								<ul class="no-bullet">
-									<li>Lorem ipsum dolor</li>
-									<li>Sit amet consecture</li>
-									<li>Dolorem respequem</li>
-									<li>Invenore veritae</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="widget">
-								<h3 class="widget-title">Social Media</h3>
-								<ul class="no-bullet">
-									<li>Facebook</li>
-									<li>Twitter</li>
-									<li>Google+</li>
-									<li>Pinterest</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="widget">
-								<h3 class="widget-title">Newsletter</h3>
-								<form action="#" class="subscribe-form">
-									<input type="text" placeholder="Email Address">
-								</form>
-							</div>
-						</div>
-					</div> <!-- .row -->
+				</div>
+			</div> 
 
-					<div class="colophon">Copyright 2014 Company name, Designed by Themezy. All rights reserved</div>
-				</div> <!-- .container -->
+		</main>
 
-			</footer>
-		</div>
-		<!-- Default snippet for navigation -->
-		<script>
-			function cargarUsuario() {
-				var idHtml = document.querySelector('#usuario')
-				var user = sessionStorage.usuario
-				idHtml.innerHTML = `<h3>Bienvenido: ${user}</h3>`
-			}
+	</div>
+	<!-- Default snippet for navigation -->
+	<script>
+		function cargarUsuario() {
+			var idHtml = document.querySelector('#usuario')
+			var user = sessionStorage.usuario
+			idHtml.innerHTML = `<h3>Bienvenido: ${user}</h3>`
 
-			function cargarPelicula(){
-				
-			}
-		</script>
+			var nombre = document.querySelector('#usuario-resenas')
+			nombre.innerHTML = `${user}`
+		}
+
+		function cargarPelicula() {
+			var html = document.querySelector('#pelicula')
+			var nombre = getParametro("nombre")
+
+			fetch(`http://localhost:3000/obtenerPelicula/${nombre}`)
+      		.then(response => response.json())
+      		//ya obtenida la respuesta en la variable json.
+      		.catch(error =>{
+        		console.log(error)
+        		alert('error')
+      		})
+      		.then(json => {
+        //imprimo en consola la respuesta.
+				console.log(json)
+				var titulo = json['titulo']
+				var imagen = json['imagen']
+				var puntuacion = json['puntuacion']
+				var duracion = json['duracion']
+				var sinopsis = json['sinopsis']
+
+				html.innerHTML += `<div class="row">
+					<div class="col-md-6">
+						<figure class="movie-poster"><img src="${imagen}" alt="#"></figure>
+					</div>
+					<div class="col-md-6">
+						<h3 class="movie-title">${titulo}</h3>
+						<div class="movie-summary">
+							<p>sinopsis</p>
+						</div>
+						<ul class="movie-meta">
+							<li><strong>Duracion:</strong>${duracion}</li>
+							<li><strong>Puntuacion:</strong>${puntuacion}</li>
+						</ul>
+					</div>
+				</div> 
+				<div class="entry-content">
+				</div>
+				`
+       		})
+		}
+
+		//AQUI VAN LAS FUNCIONES DE RESENAS.
+		function agregarResena() {
+			var nombre = getParametro("nombre")
+			var user = sessionStorage.usuario
+			let objeto = JSON.stringify({
+			  titulo: nombre,
+			  usuario: user,
+			  comentario: document.getElementById("comentario").value
+			})
+			fetch('http://localhost:3000/agregarResena', {
+			  method: 'POST',
+			  body: objeto,
+			  headers: {
+				'Content-Type': 'application/json'
+			  }
+			}).then(res => res.json())
+			  .then(json => {
+				console.log(json);
+				console.log(json.respuesta)
+				if (json.respuesta == 'Fallo') {
+				  alert(`Este usuario ya Comento.`)
+				} else if (json.respuesta == 'exito') {
+				  alert(`Su comentario se agrego exitosamente.`)
+				  location.href = `pelicula.html?nombre=${nombre}`
+				}
+			  })
+		  }
+
+		  function cargarResenas() {
+			var resenas = document.querySelector('#resenas')
+			fetch('http://localhost:3000/verResenas')
+			  .then(response => response.json())
+			  .catch(error =>
+				console.log(error)
+			  )
+			  .then(json => {
+				console.log(json)
+				for (var i in json) {
+				  resenas.innerHTML +=
+					`<div class="card">
+						<div class="card-header" >${json[i].usuario}</div>
+						<div class="card-body">
+						  <blockquote class="blockquote mb-0">
+							<p>${json[i].comentario}</p>
+						  </blockquote>
+						</div>
+					  </div>
+					  <br>`
+				}
+			  })
+		  }
+	</script>
 
 
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/app.js"></script>
-		
-	</body>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
 
 </html>

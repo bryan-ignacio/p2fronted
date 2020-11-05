@@ -63,28 +63,13 @@
 		<main class="main-content" >
 			<div class="container">
 				<div class="page">
-
-					<div class="row" id="peliculas">
-						<!-- <div class="col-sm-6 col-md-3">
-							<div class="latest-movie">
-								<a href="#"><img src="dummy/thumb-3.jpg" alt="Movie 3"></a>
+					<div class="row" >
+							<div class="slider">
+								<ul class="slides" id="peliculas">
+									<li><a href="#"><img src="dummy/slide-3.jpg" alt="Slide 3"></a></li>
+								</ul>
 							</div>
 						</div>
-						<div class="col-sm-6 col-md-3">
-							<div class="latest-movie">
-								<a href="#"><img src="dummy/thumb-4.jpg" alt="Movie 4"></a>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3">
-							<div class="latest-movie">
-								<a href="#"><img src="dummy/thumb-5.jpg" alt="Movie 5"></a>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3">
-							<div class="latest-movie">
-								<a href="#"><img src="dummy/thumb-6.jpg" alt="Movie 6"></a>
-							</div>
-						</div> -->
 					</div>
 				</div>
 			</div> <!-- .container -->
@@ -97,9 +82,8 @@
 				<div class="row">
 					<div class="col-md-2">
 						<div class="widget">
-							<h3 class="widget-title">About Us</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia tempore vitae
-								mollitia nesciunt saepe cupiditate</p>
+							<h3 class="widget-title">Nosotros</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia tempore vitae mollitia nesciunt saepe cupiditate</p>
 						</div>
 					</div>
 					<div class="col-md-2">
@@ -156,10 +140,10 @@
 					</div>
 				</div> <!-- .row -->
 
+				<div class="colophon"></div>
 			</div> <!-- .container -->
 
 		</footer>
-	</div>
 	<!-- Default snippet for navigation -->
 	<script>
 		function cargarUsuario() {
@@ -167,7 +151,6 @@
 			var user = sessionStorage.usuario
 			idHtml.innerHTML = `<h3>Bienvenido: ${user}</h3>`
 		}
-
 		function mostrarPeliculas() {
 			var tabla = document.querySelector('#peliculas')
 			//busco al elemento con id tabla
@@ -178,17 +161,13 @@
 				)
 				.then(json => {
 					console.log(json)
-					for (var i in json) {
-						tabla.innerHTML +=`<div class="col-sm-6 col-md-3">
-							<div class="latest-movie">
-								<a href="#"><img src="${json[i].imagen}" alt="Movie ${i}"></a>
-							</div>
-						</div>`
+					for (i = 0; i <= 0; i++) {
+						tabla.innerHTML += `<li><a ><img src="${json[i].imagen}"></a></li>`
 					}
 				})
 		}
 	</script>
-
+	
 
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/plugins.js"></script>

@@ -63,24 +63,11 @@
 				<div class="container">
 					<div class="page">
 						<div class="breadcrumbs">
-							<a href="index.html">Home</a>
-							<span>Movie Review</span>
+							<a href="inicio.html">Inicio</a>
+							<span>Cartelera</span>
 						</div>
 
-						<div class="filters">
-							<select name="#" id="#" placeholder="Choose Category">
-								<option value="#">Action</option>
-								<option value="#">Drama</option>
-								<option value="#">Fantasy</option>
-								<option value="#">Horror</option>
-								<option value="#">Adventure</option>
-							</select>
-							<select name="#" id="#">
-								<option value="#">2012</option>
-								<option value="#">2013</option>
-								<option value="#">2014</option>
-							</select>
-						</div>
+					
 						<div class="movie-list" id="peliculas">
 							<!-- <div class="movie">
 								<figure class="movie-poster"><img src="dummy/thumb-3.jpg" alt="#"></figure>
@@ -204,14 +191,12 @@
 						for (var i in json) {
 							tabla.innerHTML +=`<div class="movie">
 								<figure class="movie-poster"><img src="${json[i].imagen}" alt="#"></figure>
-								<div class="movie-title"><a href="pelicula.html">${json[i].titulo}</a></div>
-								<p>${json[i].sinopsis}</p>
+								<div class="movie-title"><a href="pelicula.html?nombre=${json[i].titulo}">${json[i].titulo}</a></div>
 							</div>`
 						}
 					})
 			}
 		</script>
-
 
 		<script src="js/jquery-1.11.1.min.js"></script>
 		<script src="js/plugins.js"></script>
