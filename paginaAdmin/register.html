@@ -16,7 +16,7 @@
 
 </head>
 
-<body class="bg-gradient-login">
+<body class="bg-gradient-login" >
   <!-- Register Content -->
   <div class="container-login">
     <div class="row justify-content-center">
@@ -46,12 +46,12 @@
                       <label>Contraseña</label>
                       <input type="password" class="form-control" id="password" placeholder="Contraseña">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label>Repita Contraseña</label>
                       <input type="password" class="form-control" id="repetida" placeholder="Repita Contraseña">
-                    </div>
+                    </div> -->
                     <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-block" onclick="agregarUsuario()">Registrarse</button>
+                      <button type="button" onclick="agregarUsuario()" class="btn btn-primary btn-block">Registrarse</button>
                     </div>
                   </form>
                   <div class="text-center">
@@ -70,18 +70,31 @@
   <!-- Funciones -->
   <script>
     function agregarUsuario(){
-      let xhr = new XMLHttpRequest();
-      var ruta = 'http://localhost:3000/agregarUsuario';
-      let json = JSON.stringify({
+      let objeto = JSON.stringify({
         nombre: document.getElementById("nombre").value,
         apellido: document.getElementById("apellido").value,
         usuario: document.getElementById("usuario").value,
         password: document.getElementById("password").value,
-        tipo: "usuario"
+        tipo: "cliente"
       })
-      xhr.open("POST", ruta)
-      xhr.setRequestHeader('Content-Type','application/json; charset =utf-8')
-      xhr.send(json)
+      fetch('http://localhost:3000/agregarUsuario', {
+        method: 'POST',
+        body: objeto,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(response => response.json())
+      
+      .then(json => {
+        console.log(json)
+        if (json.respuesta == 'Fallo') {
+          alert(`Este usuario ya existe.`)
+          location.href = "register.html"
+        } else if (json.respuesta == 'Exito') {
+          alert(`Se agrego el usuario correctamente.`)
+          location.href = "login.html"
+        }
+      })
     }
   </script>
   <!-- Register Content -->
