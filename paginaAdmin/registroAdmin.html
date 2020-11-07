@@ -58,6 +58,9 @@
                   <div class="text-center">
                     <a class="font-weight-bold small" href="login.html">¿Ya tienes una cuenta?</a>
                   </div>
+                  <div>
+                    <button type="button" class="btn btn-danger" onclick="salir()">Salir</button>
+                  </div>
                   <div class="text-center">
                   </div>
                 </div>
@@ -92,10 +95,13 @@
             location.href = "registroAdmin.html"
           } else if (json.respuesta == 'Exito') {
             alert(`Se agrego el administrador exitosamente.`)
-            location.href = "index.html"
+            location.href = "tablero.html"
           }
         })
       }
+      function salir(){
+        location.href = "tablero.html"
+    }
   </script>
   <!-- Register Content -->
   <script src="vendor/jquery/jquery.min.js"></script>
