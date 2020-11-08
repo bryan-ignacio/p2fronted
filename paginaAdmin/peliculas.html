@@ -183,8 +183,8 @@
                   <!-- termina boton -->
                 </div>
 
-                <div class="table-responsive p-3">
-                  <table class="table align-items-center table-flush" id="table">
+                <div class="table-responsive p-3" id="general">
+                  <table border="1" class="table align-items-center table-flush" id="table">
                     <thead class="thead-light">
                       <tr>
                         <th>Titulo</th>
@@ -194,10 +194,8 @@
                         <th>sinopsis</th>
                         <th>Editar</th>
                       </tr>
-
                     </thead>
-                    <tbody>
-                    </tbody>
+
                   </table>
                 </div>
               </div>
@@ -310,8 +308,9 @@
       }
 
       function generarPDF(){
-        var datos = document.getElementById('table').innerHTML;
-        var ventana = window.open('','','width=600,height=600')
+        var datos = document.getElementById('general').innerHTML;
+        console.log(datos)
+        var ventana = window.open('','','width=700,height=600')
         ventana.document.write('<html><head>')
         ventana.document.write('<title>REPORTE PELICULAS</title></head>')
         ventana.document.write('<body>')

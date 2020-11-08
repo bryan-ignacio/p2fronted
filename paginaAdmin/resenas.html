@@ -15,7 +15,7 @@
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
-<body onload="cargarUsuario()" id="page-top">
+<body onload="cargarUsuario(),cargarTabla()" id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
@@ -76,8 +76,9 @@
                 aria-labelledby="searchDropdown">
                 <form class="navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
-                      aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
+                    <input type="text" class="form-control bg-light border-1 small"
+                      placeholder="What do you want to look for?" aria-label="Search" aria-describedby="basic-addon2"
+                      style="border-color: #3f51b5;">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
@@ -132,101 +133,109 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Tabla de Reseñas</h6>
                 </div>
+
                 <div class="table-responsive p-3">
-                  <table class="table align-items-center table-flush" id="dataTable">
+                  <table class="table align-items-center table-flush" id="table">
                     <thead class="thead-light">
                       <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Id</th>
+                        <th>Titulo</th>
+                        <th>Usuario</th>
+                        <th>reseña</th>
                       </tr>
                     </thead>
-                    <tfoot>
-                      <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                      </tr>
-                    </tfoot>
-                    <tbody>
-                      <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                      </tr>
-                    </tbody>
                   </table>
                 </div>
               </div>
             </div>
-    <!--Row-->
+            <!--Row-->
 
-          <!-- Modal Logout -->
-          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Are you sure you want to logout?</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-                  <a href="login.html" class="btn btn-primary">Logout</a>
+            <!-- Modal Logout -->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Are you sure you want to logout?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                    <a href="login.html" class="btn btn-primary">Logout</a>
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
-
+          <!---Container Fluid-->
         </div>
-        <!---Container Fluid-->
+        <!-- Footer -->
       </div>
-      <!-- Footer -->
     </div>
-  </div>
 
-  <script>
-    function cargarUsuario(){
-      var idHtml = document.querySelector('#usuario')
-      var user = sessionStorage.usuario
-      idHtml.innerHTML = `<h3>${user}</h3>`
-    }
-  </script>
+    <script>
+      function cargarUsuario() {
+        var idHtml = document.querySelector('#usuario')
+        var user = sessionStorage.usuario
+        idHtml.innerHTML = `<h3>${user}</h3>`
+      }
 
-  <!-- Scroll to top -->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+      function cargarTabla() {
+        //PETICIONES PARA GENERAR LA TABLA DE PELICULAS.
+        //busco al elemento con id tabla
+        var tabla = document.querySelector('#table')
+        fetch('http://localhost:3000/verResenas')
+          .then(response => response.json())
+          .catch(error => console.log(error))
+          .then(json => {
+            console.log(json)
+            for (var i in json) {
+              tabla.innerHTML +=
+                `<tr>
+            <td> ${json[i].id} </td>
+            <td> ${json[i].titulo} </td>
+            <td> ${json[i].usuario} </td>
+            <td> ${json[i].comentario} </td>
+          </tr>`
+            }
+            tabla.innerHTML += `<tfoot>
+              <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Usuario</th>
+                <th>Reseña</th>
+              </tr>
+            </tfoot>`
+          })
+      }
+    </script>
 
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="js/ruang-admin.min.js"></script>
-  <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Scroll to top -->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
 
-  <!-- Page level custom scripts -->
-  <script>
-    $(document).ready(function () {
-      $('#dataTable').DataTable(); // ID From dataTable 
-      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-    });
-  </script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/ruang-admin.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script>
+      $(document).ready(function () {
+        $('#dataTable').DataTable(); // ID From dataTable 
+        $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+      });
+    </script>
 
 </body>
 

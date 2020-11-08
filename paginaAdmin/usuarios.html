@@ -138,28 +138,8 @@
                 </div>
 
                 <div id="tabla" class="table-responsive p-3">
-                </div>
 
-                <!-- <div class="table-responsive p-3" id="tabla" >
-                  <table class="table align-items-center table-flush" id="dataTable">
-                    <thead class="thead-light">
-                      <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Usuario</th>
-                        <th>Tipo</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Bryan</td>
-                        <td>Ignacio</td>
-                        <td>usuario177x</td>
-                        <td>Administrador</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div> -->
+                </div>
 <!-- AQUI TERMINA LA DIVISION DE TABLA-->
               </div>
             </div>
@@ -201,7 +181,7 @@
     }
   </script>
   <script>
-    var html = `<table class="table align-items-center table-flush" id="dataTable">
+    var html = `<table border="1" class="table align-items-center table-flush" id="dataTable">
       <thead class="thead-light">
         <tr>
           <th>Nombre</th>
@@ -232,7 +212,7 @@
       //funcion para generar reporte en PDF
       function generarPDF(){
         var datos = document.getElementById('tabla').innerHTML;
-        var ventana = window.open('','','width=800,height=1000')
+        var ventana = window.open('','','width=700,height=600')
         ventana.document.write('<html><head>')
         ventana.document.write('<title>REPORTE USUARIOS</title></head>')
         ventana.document.write('<body>')

@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 		
-		<title>Cartelera</title>
+		<title>Nosotros</title>
 
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
@@ -20,8 +20,7 @@
 		<![endif]-->
 
 	</head>
-
-	<body onload="cargarUsuario(),mostrarPeliculas()">
+	<body onload="cargarUsuario()">
 		<div class="container">
 			<a href="inicio.html" id="branding">
 				<div class="logo-copy">
@@ -29,7 +28,6 @@
 					<h1 class="site-title" id="usuario"></h1>
 				</div>
 		</div>
-
 		<div id="site-content">
 			<header class="site-header">
 				<div class="container">
@@ -40,7 +38,6 @@
 							<small class="site-description">La magia del cine</small>
 						</div>
 					</a> <!-- #branding -->
-
 					<div class="main-navigation">
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
@@ -52,13 +49,12 @@
 							<li class="menu-item"><a href="../paginaAdmin/perfilCliente.html">Perfil</a></li>
 							<li class="menu-item"><a href="index.html">Cerrar Sesión</a></li>
 						</ul> <!-- .menu -->
-
 						<form action="#" class="search-form">
 							<input type="text" placeholder="Search...">
 							<button><i class="fa fa-search"></i></button>
 						</form>
 					</div> <!-- .main-navigation -->
-
+	
 					<div class="mobile-navigation"></div>
 				</div>
 			</header>
@@ -66,24 +62,48 @@
 				<div class="container">
 					<div class="page">
 						<div class="breadcrumbs">
-							<a href="inicio.html">Inicio</a>
-							<span>Cartelera</span>
+							<a href="index.html">Inicio</a>
+							<span>Acerca De Nosotros</span>
 						</div>
 
-					
-						<div class="movie-list" id="peliculas">
-							
-						</div> <!-- .movie-list -->
-
-						<div class="pagination">
-							<a href="#" class="page-number prev"><i class="fa fa-angle-left"></i></a>
-							<span class="page-number current">1</span>
-							<a href="#" class="page-number">2</a>
-							<a href="#" class="page-number">3</a>
-							<a href="#" class="page-number">4</a>
-							<a href="#" class="page-number">5</a>
-							<a href="#" class="page-number next"><i class="fa fa-angle-right"></i></a>
+						<div class="row">
+							<!-- <div class="col-md-4">
+								<figure><img src="dummy/figure.jpg" alt="figure image"></figure>
+							</div> -->
+							<div class="col-md-8">
+								<p class="leading"><strong>Quiénes Somos:</strong></p>
+								<p>
+									Cinella, Inc. es una cadena de cines que tiene presencia y liderazgo en el país de Guatemala, 
+									su sede corporativa está localizada en Ciudad de Guatemala.</p>
+							</div>
 						</div>
+
+						<div class="row">
+							<div class="col-md-9">
+								<h2 class="section-title"><strong>Vision &amp; Misión:</strong></h2>
+								<p>Nuestra misión es dar a nuestros invitados la mejor experiencia de entretenimiento, basada en el esfuerzo, talento y compromiso de todos, generando valor, innovación y mucha diversión. </p>
+
+								<p>Con la finalidad de hacer que nuestros invitados vivan al máximo La Magia del Cine, 
+									hoy en día contamos con diferentes tipos de salas: Pop, Tradicional, Premium, Palco y Platino, 
+									todas ellas equipadas con lo último en tecnología en audio y video, así como proyección digital, 
+									aunado al mejor servicio de nuestro staff para cada uno de nuestros invitados. También contamos con 
+									Cinella 3D en donde podrás experimentar sensaciones reales de movimiento en sincronía con la película; 
+									así como las salas   CinellaXtremo que cuenta con proyección digital y audio envolvente con sonido Dolby Atmos, 
+									que posiciona a Cinella como la cadena de cines con más número de salas con este tipo de tecnología en Guatemala.
+								</p>
+							</div>
+							<div class="col-md-3">
+								<h2 class="section-title">FORMATOS QUE MANEJAMOS:</h2>
+								<ul class="arrow">
+									<li><a href="#">XD (EXTREME DIGITAL CINEMA)</a></li> 
+									<li><a href="#">REALD 3D</a></li>
+									<li><a href="#">D-BOX</a></li> 
+									<li><a href="#">PREMIER / ÁREA VIP</a></li> 
+									<li><a href="#">BISTRO</a></li>
+								</ul>
+							</div>
+						</div> <!-- .row -->
+						
 					</div>
 				</div> <!-- .container -->
 			</main>
@@ -151,27 +171,7 @@
 				var user = sessionStorage.usuario
 				idHtml.innerHTML = `<h3>Bienvenido: ${user}</h3>`
 			  }
-
-			function mostrarPeliculas() {
-				var tabla = document.querySelector('#peliculas')
-				//busco al elemento con id tabla
-				fetch('http://localhost:3000/verPeliculas')
-					.then(response => response.json())
-					.catch(error =>
-						console.log(error)
-					)
-					.then(json => {
-						console.log(json)
-						for (var i in json) {
-							tabla.innerHTML +=`<div class="movie">
-								<figure class="movie-poster"><img src="${json[i].imagen}" alt="#"></figure>
-								<div class="movie-title"><a href="pelicula.html?nombre=${json[i].titulo}">${json[i].titulo}</a></div>
-							</div>`
-						}
-					})
-			}
 		</script>
-
 		<script src="js/jquery-1.11.1.min.js"></script>
 		<script src="js/plugins.js"></script>
 		<script src="js/app.js"></script>
