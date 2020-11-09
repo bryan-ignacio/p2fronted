@@ -14,7 +14,7 @@
   <link href="css/ruang-admin.min.css" rel="stylesheet">
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
-
+<!-- cargo el usuario en el html con el metodo onload -->
 <body onload="cargarUsuario()"  id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
@@ -174,13 +174,17 @@
   </div>
 
   <script>
+    //carga el usuario al html
     function cargarUsuario(){
       var idHtml = document.querySelector('#usuario')
+      //obtengo el usuario del sessionStorage.
       var user = sessionStorage.usuario
+      //agrego el usuario a la varible que contiene el id indicado previamente.
       idHtml.innerHTML = `<h3>${user}</h3>`
     }
   </script>
   <script>
+    //creo una variable que almacenara contenido html que se ira modificando.
     var html = `<table border="1" class="table align-items-center table-flush" id="dataTable">
       <thead class="thead-light">
         <tr>
@@ -190,12 +194,15 @@
           <th>Tipo</th>
         </tr>
       </thead>`
-
+      //creo el metodo fetch que contiene una ruta de tipo GET.
     fetch('http://localhost:3000/verUsuarios')
       .then(response => response.json())
       .then(json => {
+        //imprimo la respuesta en consola.
         console.log(json)
+        //creo una variable que contendra la respuesta de tipo json.
         var usuarios = json
+        //modifico el html con los datos de la respuesta.
         html += '<tbody>'
           for (var i = 0; i < usuarios.length; i++) {
             html += '<tr>'
@@ -211,14 +218,19 @@
 
       //funcion para generar reporte en PDF
       function generarPDF(){
+        //creo una variable datos que contendra los datos obtenidos del id tabla.
         var datos = document.getElementById('tabla').innerHTML;
+        //creo una variable y llamo al metodo open y le agrego los parametros.
         var ventana = window.open('','','width=700,height=600')
+        //escribo en el documento los datos que contiene mi tabla.
         ventana.document.write('<html><head>')
         ventana.document.write('<title>REPORTE USUARIOS</title></head>')
         ventana.document.write('<body>')
         ventana.document.write(datos)
         ventana.document.write('</body></html>')
+        //lo cierro.
         ventana.document.close()
+        //luego imprimo los datos.
         ventana.print()
       }
 

@@ -52,7 +52,7 @@
     };
   </script>
 </head>
-
+<!-- cargamos el metodo con onload para que ingrese los datos de las peliculas -->
 <body onload="ingresarDatos()" id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
@@ -232,8 +232,11 @@
     </div>
     <script>
       function ingresarDatos() {
+        //creo una variable en donde voy a modificar mi html con el id indicado.
         var idHtml = document.querySelector('#usuario')
+        //busco en sessionStore mi usuario y lo almaceno en una variable.
         var user = sessionStorage.usuario
+        //modifico mi html para colocar el usuario.
         idHtml.innerHTML = `<h3>${user}</h3>`
 
         //PETICIONES PARA GENERAR LA TABLA DE PELICULAS.
@@ -245,8 +248,12 @@
             console.log(error)
           )
           .then(json => {
+            //resivo mi respuesta ya convertida en tipo json.
             console.log(json)
+            //recorro la respuesta buscando cada llave y colocandola en su respectivo html.
             for (var i in json) {
+              //con innerHTML agrego los datos a mi tabla con el id indicado con anterioridad.
+              //envio tambien el boton en el metodo verPelicula y en eliminar para que al hacer click ejecute su metodo respectivo.
               tabla.innerHTML +=
                 `<tr>
             <td> ${json[i].titulo} </td>
@@ -271,7 +278,7 @@
             </tfoot>`
           })
       }
-
+      //esta funcion es llamada cuando hacemos click en el boton EDITAR.
       function verPelicula(boton) {
         //creo una variable que voy a mandar al sessionStorage.
         var titulo = boton.value
@@ -280,12 +287,16 @@
         //redireccionamos a la pagina pelicula.
         location.href = "pelicula.html"
       }
-
+      //esta funcion es llamada cuando hacemos click en el boton ELIMINAR.
       function eliminar(boton) {
+        //creo una variable y la inicializo con el valor del boton pasado como parametro.
         var titulo = boton.value
+        //creo un objeto de tipo json que contentra el titulo obtenido del sessionStorage
         let objeto = JSON.stringify({
           titulo: titulo
         })
+        //creo mi metodo fetch en donde la ruta recibe un parametro.
+        //le mandamos el titulo obtenido y el objeto de tipo json.
           fetch(`http://localhost:3000/eliminarPelicula/${titulo}`, {
             method: 'POST',
             body: objeto,
@@ -298,6 +309,7 @@
               alert("A ocurrido un error.")})
             .then(json => {
               console.log(json)
+              //recibo mi respuesta y se hacen las validaciones respectivas.
               if (json.respuesta == 'Fallo') {
                 alert(`No se pudo eliminar la Pelicula.`)
               } else if (json.respuesta == 'Exito') {
@@ -306,14 +318,19 @@
               }
             })
       }
-
+      //esta funcion genera el pdf de las peliculas que se podran descargar.
       function generarPDF(){
+        //creo una variable que se inicializara con el contendio del id.
         var datos = document.getElementById('general').innerHTML;
+        //imprimo los datos en consola.
         console.log(datos)
+        //creo una variable y llamo al metodo open y le agrego los parametros.
         var ventana = window.open('','','width=700,height=600')
+        //le doy un formato a mi documento y lo escribo.
         ventana.document.write('<html><head>')
         ventana.document.write('<title>REPORTE PELICULAS</title></head>')
         ventana.document.write('<body>')
+        //ingreso los datos a mi pdf
         ventana.document.write(datos)
         ventana.document.write('</body></html>')
         ventana.document.close()

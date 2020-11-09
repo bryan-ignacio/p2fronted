@@ -15,7 +15,7 @@
   <link href="css/ruang-admin.min.css" rel="stylesheet">
 
 </head>
-
+<!-- cargo los datos del usuario -->
 <body onload="ingresarUsuario()" class="bg-gradient-login">
   <!-- Register Content -->
   <div class="container-login">
@@ -63,6 +63,7 @@
   </div>
   <!-- Funciones -->
   <script>
+    //funcion que ingresa los datos de usuario.
     function ingresarUsuario(){
       //creamos una variable titulo que contendra lo que tiene ver en sessionStorage que es el titulo.
       var user_name = sessionStorage.usuario
@@ -85,15 +86,19 @@
         document.getElementById('password').value = json['password']
        })
     }
+    //esta funcion modifica el usuario al hacer click el boton guardar.
     function modificarUsuario(){
+      //creo una varible que contiene el usuario guardado en sessionStorage.
       var user_name = sessionStorage.usuario
+      //creo un objeto que contendra todos los valores de los id indicados.
       let objeto = JSON.stringify({
         nombre: document.getElementById('nombre').value,
         apellido: document.getElementById('apellido').value,
         usuario: document.getElementById('usuario').value,
         password: document.getElementById('password').value
       })
-      
+      //creo mi metodo fetch de tipo POST que tiene una ruta que necesita un parametro.
+      //el cual sera el obtenido del sessionStorage.
         fetch(`http://localhost:3000/actualizarUsuario/${user_name}`, {
           method: 'POST',
           body: objeto,

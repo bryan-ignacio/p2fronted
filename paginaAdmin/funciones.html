@@ -14,7 +14,7 @@
   <link href="css/ruang-admin.min.css" rel="stylesheet">
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
-
+<!-- cargo el usuario a la pagina utilizando el metodo onload -->
 <body onload="cargarUsuario()" id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
@@ -174,6 +174,7 @@
     <!--scripts-->
 
     <script>
+      //creo una varible que almacenara el contenido html
       var html = `<table class="table align-items-center table-flush" id="dataTable">
         <thead class="thead-light">
           <tr>
@@ -185,12 +186,15 @@
             <th></th>
           </tr>
         </thead>`
-
+        //creo el metodo fetch que tiene una ruta como parametro de tipo GET.
       fetch('http://localhost:3000/verFunciones')
         .then(response => response.json())
         .then(json => {
+          //imprimo la respuesta en consola.
           console.log(json)
+          //creo una variable que contendra la respuesta de tipo json.
           var funciones = json
+          //agrego el contenido json y el contenido del json.
           html += '<tbody>'
             for (var i = 0; i < funciones.length; i++) {
               html += '<tr>'
@@ -212,18 +216,26 @@
     </script>
 
     <script>
+      //esta funcion carga el usuario en la pagina.
       function cargarUsuario(){
+        //creo una variable donde se modificara el html con el id indicado.
         var idHtml = document.querySelector('#usuario')
+        //creo una variable que almacenara el usuario guardado en el sessionStorage
         var user = sessionStorage.usuario
+        //modifico el html.
         idHtml.innerHTML = `<h3>${user}</h3>`
       }
 
-      //aqui va la funcion eliminar.
+      //aqui va la funcion eliminar recibe el boton como parametro.
       function eliminar(boton) {
+        //creo una variable que almacenara el nombre obtenido del obton.
         var nombre = boton.value
+        //creo un objeto de tipo json.
         let objeto = JSON.stringify({
           nombre: nombre
         })
+        //creo el metodo fetch que contiene una ruta de tipo POST.
+        //recibe como parametro un nombre que es el obtenido del sessionStorage.
           fetch(`http://localhost:3000/eliminarFuncion/${nombre}`, {
             method: 'POST',
             body: objeto,
@@ -235,7 +247,9 @@
               console.error('Error:', error)
               alert("A ocurrido un error.")})
             .then(json => {
+              //imprimo mi respuesta.
               console.log(json)
+              //se hacen las validaciones respectivas.
               if (json.respuesta == 'Fallo') {
                 alert(`No se pudo eliminar la Funcion.`)
               } else if (json.respuesta == 'Exito') {

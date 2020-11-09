@@ -73,7 +73,9 @@
   </div>
   <!-- Funciones -->
   <script>
+    //esta funcion agrega un usuario al hacer click en registrarse.
       function agregarUsuario(){
+        //creo un objeto que contendra los valores ingresados por el cliente en el id indicado.
         let objeto = JSON.stringify({
           nombre: document.getElementById("nombre").value,
           apellido: document.getElementById("apellido").value,
@@ -81,6 +83,7 @@
           password: document.getElementById("password").value,
           tipo: "administrador"
         })
+        //creo el metodo fetch con una ruta de tipo POST que agregara el usuario.
         fetch('http://localhost:3000/agregarUsuario', {
           method: 'POST',
           body: objeto,

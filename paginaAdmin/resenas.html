@@ -14,7 +14,7 @@
   <link href="css/ruang-admin.min.css" rel="stylesheet">
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
-
+<!--cargo los datos de usuario y los datos de tabla en el body -->
 <body onload="cargarUsuario(),cargarTabla()" id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
@@ -181,20 +181,27 @@
 
     <script>
       function cargarUsuario() {
+        //creo una variable que contendra los datos del id indicado.
         var idHtml = document.querySelector('#usuario')
+        //creo una variable que contendra el usuario guardado en sessionStorage.
         var user = sessionStorage.usuario
+        //agrego el html con el usuario obtenido.
         idHtml.innerHTML = `<h3>${user}</h3>`
       }
-
+      //esta funcion carga la tabla a nuestro html.
       function cargarTabla() {
         //PETICIONES PARA GENERAR LA TABLA DE PELICULAS.
-        //busco al elemento con id tabla
+        //busco al elemento con id table
         var tabla = document.querySelector('#table')
+        //creo mi metodo fetch que tiene un ruta GET que nos brindara una respuesta.
         fetch('http://localhost:3000/verResenas')
           .then(response => response.json())
           .catch(error => console.log(error))
           .then(json => {
+            //imprimo la respuesta en consola.
             console.log(json)
+            //recorro mi respuesta de tipo json.
+            //agrego los datos a la tabla con la llave indicada.
             for (var i in json) {
               tabla.innerHTML +=
                 `<tr>
