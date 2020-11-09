@@ -30,7 +30,7 @@
 
         console.log(json_peticion)
         //creamos nuestro fetch con la ruta leerArchivo que retorna 'Exito' como respuesta
-        fetch(`http://localhost:3000/leerArchivo`, {
+        fetch(`https://cinellabackend.herokuapp.com/leerArchivo`, {
           method: 'POST',
           body: json_peticion,
           headers: {
@@ -242,7 +242,7 @@
         //PETICIONES PARA GENERAR LA TABLA DE PELICULAS.
         //busco al elemento con id tabla
         var tabla = document.querySelector('#table')
-        fetch('http://localhost:3000/verPeliculas')
+        fetch('https://cinellabackend.herokuapp.com/verPeliculas')
           .then(response => response.json())
           .catch(error =>
             console.log(error)
@@ -297,7 +297,7 @@
         })
         //creo mi metodo fetch en donde la ruta recibe un parametro.
         //le mandamos el titulo obtenido y el objeto de tipo json.
-          fetch(`http://localhost:3000/eliminarPelicula/${titulo}`, {
+          fetch(`https://cinellabackend.herokuapp.com/eliminarPelicula/${titulo}`, {
             method: 'POST',
             body: objeto,
             headers: {

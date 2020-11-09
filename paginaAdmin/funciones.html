@@ -187,7 +187,7 @@
           </tr>
         </thead>`
         //creo el metodo fetch que tiene una ruta como parametro de tipo GET.
-      fetch('http://localhost:3000/verFunciones')
+      fetch('https://cinellabackend.herokuapp.com/verFunciones')
         .then(response => response.json())
         .then(json => {
           //imprimo la respuesta en consola.
@@ -236,7 +236,7 @@
         })
         //creo el metodo fetch que contiene una ruta de tipo POST.
         //recibe como parametro un nombre que es el obtenido del sessionStorage.
-          fetch(`http://localhost:3000/eliminarFuncion/${nombre}`, {
+          fetch(`https://cinellabackend.herokuapp.com/eliminarFuncion/${nombre}`, {
             method: 'POST',
             body: objeto,
             headers: {

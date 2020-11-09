@@ -194,7 +194,7 @@
         //busco al elemento con id table
         var tabla = document.querySelector('#table')
         //creo mi metodo fetch que tiene un ruta GET que nos brindara una respuesta.
-        fetch('http://localhost:3000/verResenas')
+        fetch('https://cinellabackend.herokuapp.com/verResenas')
           .then(response => response.json())
           .catch(error => console.log(error))
           .then(json => {

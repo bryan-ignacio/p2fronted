@@ -69,7 +69,7 @@
       var user_name = sessionStorage.usuario
 
       //creo mi fetch utilizando la ruta para obtener una pelicula en especifico.
-      fetch(`http://localhost:3000/obtenerUsuario/${user_name}`)
+      fetch(`https://cinellabackend.herokuapp.com/obtenerUsuario/${user_name}`)
       .then(response => response.json())
       //ya obtenida la respuesta en la variable json.
       .catch(error =>{
@@ -99,7 +99,7 @@
       })
       //creo mi metodo fetch de tipo POST que tiene una ruta que necesita un parametro.
       //el cual sera el obtenido del sessionStorage.
-        fetch(`http://localhost:3000/actualizarUsuario/${user_name}`, {
+        fetch(`https://cinellabackend.herokuapp.com/actualizarUsuario/${user_name}`, {
           method: 'POST',
           body: objeto,
           headers: {

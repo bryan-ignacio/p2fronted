@@ -68,7 +68,7 @@
       //creamos una variable titulo que contendra lo que tiene ver en sessionStorage que es el titulo.
       var titulo = sessionStorage.ver
       //creo mi fetch utilizando la ruta para obtener una pelicula en especifico.
-      fetch(`http://localhost:3000/obtenerPelicula/${titulo}`)
+      fetch(`https://cinellabackend.herokuapp.com/obtenerPelicula/${titulo}`)
       .then(response => response.json())
       //ya obtenida la respuesta en la variable json.
       .catch(error =>{
@@ -96,7 +96,7 @@
         sinopsis: document.getElementById('sinopsis').value
       })
       
-        fetch(`http://localhost:3000/actualizarPelicula/${titulo}`, {
+        fetch(`https://cinellabackend.herokuapp.com/actualizarPelicula/${titulo}`, {
           method: 'POST',
           body: objeto,
           headers: {

@@ -155,7 +155,7 @@
             var tabla = document.querySelector('#tabla')
              
             //creo mi fetch utilizando la ruta para obtener una funcion en especifico.
-            fetch(`http://localhost:3000/obtenerSala?nombre=${nombre}`)
+            fetch(`https://cinellabackend.herokuapp.com/obtenerSala?nombre=${nombre}`)
             .then(response => response.json())
             //ya obtenida la respuesta en la variable json.
             .catch(error =>{
@@ -194,7 +194,7 @@
             nombre: nombre,
             identificador : id
           })
-          fetch('http://localhost:3000/apartar', {
+          fetch('https://cinellabackend.herokuapp.com/apartar', {
             method: 'POST',
             body: objeto,
             headers: {

@@ -62,7 +62,7 @@
       let objeto = JSON.stringify({
         usuario: document.getElementById("usuario").value
       })
-      fetch('http://localhost:3000/recuperarPassword', {
+      fetch('https://cinellabackend.herokuapp.com/recuperarPassword', {
         method: 'POST',
         body: objeto,
         headers: {

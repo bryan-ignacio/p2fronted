@@ -136,7 +136,7 @@
 			var html = document.querySelector('#pelicula')
 			var nombre = getParametro("nombre")
 
-			fetch(`http://localhost:3000/obtenerPelicula/${nombre}`)
+			fetch(`https://cinellabackend.herokuapp.com/obtenerPelicula/${nombre}`)
       		.then(response => response.json())
       		//ya obtenida la respuesta en la variable json.
       		.catch(error =>{
@@ -182,7 +182,7 @@
 			  usuario: user,
 			  comentario: document.getElementById("comentario").value
 			})
-			fetch('http://localhost:3000/agregarResena', {
+			fetch('https://cinellabackend.herokuapp.com/agregarResena', {
 			  method: 'POST',
 			  body: objeto,
 			  headers: {
@@ -203,7 +203,7 @@
 
 		  function cargarResenas() {
 			var resenas = document.querySelector('#resenas')
-			fetch('http://localhost:3000/verResenas')
+			fetch('https://cinellabackend.herokuapp.com/verResenas')
 			  .then(response => response.json())
 			  .catch(error =>
 				console.log(error)

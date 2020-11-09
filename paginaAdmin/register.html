@@ -77,7 +77,7 @@
         password: document.getElementById("password").value,
         tipo: "cliente"
       })
-      fetch('http://localhost:3000/agregarUsuario', {
+      fetch('https://cinellabackend.herokuapp.com/agregarUsuario', {
         method: 'POST',
         body: objeto,
         headers: {

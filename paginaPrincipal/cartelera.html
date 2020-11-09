@@ -155,7 +155,7 @@
 			function mostrarPeliculas() {
 				var tabla = document.querySelector('#peliculas')
 				//busco al elemento con id tabla
-				fetch('http://localhost:3000/verPeliculas')
+				fetch('https://cinellabackend.herokuapp.com/verPeliculas')
 					.then(response => response.json())
 					.catch(error =>
 						console.log(error)

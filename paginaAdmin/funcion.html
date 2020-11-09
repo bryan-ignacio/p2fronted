@@ -55,12 +55,11 @@
   </div>
   <script>
     function agregarFuncion() {
-      let xhr = new XMLHttpRequest();
       let objeto = JSON.stringify({
         nombre: document.getElementById("nombre").value,
         horario: document.getElementById("horario").value
       })
-      fetch('http://localhost:3000/agregarFuncion', {
+      fetch('https://cinellabackend.herokuapp.com/agregarFuncion', {
         method: 'POST',
         body: objeto,
         headers: {
